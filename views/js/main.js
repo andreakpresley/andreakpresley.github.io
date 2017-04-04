@@ -403,7 +403,7 @@ var resizePizzas = function(size) {
   window.performance.mark("mark_start_resize");   // User Timing API function
 
   // Changes the value for the size of the pizza above the slider
-  var pizzaSize = document.querySelector("#pizzaSize");
+  var pizzaSize = document.getElementById("#pizzaSize");
   function changeSliderLabel(size) {
     switch(size) {
       case "1":
@@ -422,44 +422,30 @@ var resizePizzas = function(size) {
 
   changeSliderLabel(size);
 
-   // Returns the size difference to change a pizza element from one size to another. Called by changePizzaSlices(size).
-  function determineDx (elem, size) {
-    var oldWidth = elem.offsetWidth;
-    var windowWidth = document.getElementById("#randomPizzas").offsetWidth;
-    var oldSize = oldWidth / windowWidth;
-
+    //Lecture recommendation
+    var newWidth;
     // Changes the slider value to a percent width
-    function sizeSwitcher (size) {
+    function changePizzaSizes (size) {
       switch(size) {
         case "1":
-          return 0.25;
+          newWidth = 25;
+          break;
         case "2":
-          return 0.3333;
+          newWidth = 33.3;
+          break;
         case "3":
-          return 0.5;
+          newWidth = 50;
+          break;
         default:
           console.log("bug in sizeSwitcher");
       }
+      var randomPizzaContainer = document.getElementsByClassName("randomPizzaContainer");
+      var rpcLength = randomPizzaContainer.length;
+      // Iterates through pizza elements on the page and changes their widths
+      for (var i = 0; i < rpcLength; i++) {
+        randomPizzaContainer[i].style.width = newwidth + "%";
+      }
     }
-
-    var newSize = sizeSwitcher(size);
-    var dx = (newSize - oldSize) * windowWidth;
-
-    return dx;
-  }
-
-  // Iterates through pizza elements on the page and changes their widths
-  var randomPizzaContainer = document.getElementsByClassName("randomPizzaContainer");
-  var rpcLength = randomPizzaContainer.length;
-  function changePizzaSizes(size) {
-    var i;
-    var dx = determineDx(randomPizzaContainer[i], size);
-    var newwidth = (randomPizzaContainer[i].offsetWidth + dx) + 'px';
-    for (i = 0; i < rpcLength; i++) {
-      randomPizzaContainer[i].style.width = newwidth;
-    }
-  }
-
   changePizzaSizes(size);
 
   // User Timing API is awesome
