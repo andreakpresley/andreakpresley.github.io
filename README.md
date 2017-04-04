@@ -1,6 +1,7 @@
 ## Website Performance Optimization portfolio project
 
 To view this application, go to https://andreakpresley.github.io
+
 To run locally, download the project and open index.html
 
 ### How to test
