@@ -9,13 +9,13 @@ To view this application, go to https://andreakpresley.github.io
 
 ### Optimizations made
 
-####index.html
+#### index.html
 1. Inlined the stylesheet (style.css)
 2. Added the media attribute and set it to 'print' for the print.css file
 3. Added font face attribute to style sheet
 4. Removed some style attributes and moved those to the style inlined as mentioned above
 
-####main.js
+#### main.js
 1. Changed all "querySelector" calls to use "getElementBy.."
 2. Removed determineDx() method
 3. Refactored changePizzaSizes() to use percentage values for width
