@@ -422,7 +422,7 @@ var resizePizzas = function(size) {
 
   changeSliderLabel(size);
 
-    //Lecture recommendation
+    //Lecture recommendation to use percentage values
     var newWidth;
     // Changes the slider value to a percent width
     function changePizzaSizes (size) {
